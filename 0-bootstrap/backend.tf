@@ -1,5 +1,5 @@
 /**
- * Copyright 2022 Google LLC
+ * Copyright 2021 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,9 @@
  * limitations under the License.
  */
 
-// The DNS name of peering managed zone. Must end with a period.
-domain = "example.com."
-
-terraform_service_account = "NETWORKS_STEP_TERRAFORM_SERVICE_ACCOUNT_EMAIL"
-
-remote_state_bucket = "REMOTE_STATE_BUCKET"
-
-//enable_hub_and_spoke_transitivity = true
+terraform {
+  backend "gcs" {
+    bucket = "bkt-b-tfstate-83fd"
+    prefix = "terraform/bootstrap/state"
+  }
+}
